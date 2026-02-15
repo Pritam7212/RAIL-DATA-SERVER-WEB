@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHMU - Login Portal</title>
+    <link href="FA/fontawesome-free-6.6.0-web/css/fontawesome.css" rel="stylesheet" />
+    <link href="FA/fontawesome-free-6.6.0-web/css/solid.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .header img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .option-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            background: #f0f4ff;
+        }
+
+        .option-icon {
+            font-size: 60px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .option-card.admin:hover .option-icon {
+            color: #764ba2;
+        }
+
+        .option-card.station:hover .option-icon {
+            color: #764ba2;
+        }
+
+        .option-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .option-desc {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .option-button {
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .option-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .option-card {
+                padding: 30px;
+            }
+
+            .option-icon {
+                font-size: 50px;
+            }
+
+            .option-title {
+                font-size: 20px;
+            }
+        }
+
+        .security-badge {
+            display: inline-block;
+            background: #d4edda;
+            color: #155724;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/logo.png" alt="UHMU Logo">
+            <h1>UHMU Dashboard</h1>
+            <p>Unified Hybrid Master Unit - Access Control Portal</p>
+        </div>
+
+        <div class="content">
+            <p style="text-align: center; color: #666; margin-bottom: 10px; font-size: 15px;">
+                <strong>Select your login type to continue:</strong>
+            </p>
+
+            <div class="options-grid">
+                <!-- Admin Login Option -->
+                <a href="login_D.html?type=admin" class="option-card admin">
+                    <div class="option-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="option-title">Administrator</div>
+                    <div class="option-desc">
+                        Access full system administration panel and manage all stations and users
+                    </div>
+                    <button class="option-button">Login as Admin</button>
+                </a>
+
+                <!-- Station Login Option -->
+                <a href="login_D.html?type=station" class="option-card station">
+                    <div class="option-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="option-title">Station</div>
+                    <div class="option-desc">
+                        Access your station-specific data and remote monitoring capabilities
+                    </div>
+                    <button class="option-button">Login as Station</button>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <span class="security-badge">
+                    <i class="fas fa-lock"></i> Secure Login Portal
+                </span>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 UHMU System. All rights reserved. | Powered by AllotropeSys
+        </div>
+    </div>
+
+    <script>
+        // Detect orientation and redirect accordingly
+        function checkOrientation() {
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const currentFile = window.location.pathname.split('/').pop();
+            
+            if (isPortrait && currentFile.includes('index')) {
+                // Redirect to mobile version if available
+                const loginType = new URLSearchParams(window.location.search).get('type') || '';
+                if (loginType) {
+                    window.location.href = 'login_M.html?type=' + loginType;
+                }
+            }
+        }
+
+        window.addEventListener("resize", checkOrientation);
+        window.addEventListener("orientationchange", checkOrientation);
+        // Uncomment if you have a mobile index page
+        // checkOrientation();
+    </script>
+</body>
+</html>

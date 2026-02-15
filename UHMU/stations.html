@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button.delete {
+            background: #dc3545;
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+        
+        button.delete:hover {
+            background: #c82333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table th {
+            background: #f5f5f5;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .credentials-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .credentials-info strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Station Management</h1>
+            <p>Manage station-wise login credentials for UHMU</p>
+        </div>
+        
+        <div class="content">
+            <a href="index.html" class="back-link">← Back to Dashboard</a>
+            
+            <div id="alert-container"></div>
+            
+            <div class="section">
+                <h2>Add New Station</h2>
+                <div class="credentials-info">
+                    <strong>ℹ️ Note:</strong> This page now syncs directly with the RAIL Data Server. Any changes made from the backend will appear here automatically.
+                </div>
+                <form id="add-station-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="station-name">Station Name *</label>
+                            <input type="text" id="station-name" placeholder="e.g., station_1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="station-id">Station ID</label>
+                            <input type="text" id="station-id" placeholder="e.g., S001">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="station-password">Password *</label>
+                            <input type="password" id="station-password" placeholder="Enter password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="station-location">Location</label>
+                            <input type="text" id="station-location" placeholder="e.g., LOC1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="station-email">Email</label>
+                            <input type="email" id="station-email" placeholder="station@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="station-phone">Phone</label>
+                            <input type="tel" id="station-phone" placeholder="+91-9876543210">
+                        </div>
+                    </div>
+                    <button type="submit">➕ Add Station</button>
+                </form>
+            </div>
+            
+            <div class="section">
+                <h2>Existing Stations</h2>
+                <table id="stations-table">
+                    <thead>
+                        <tr>
+                            <th>Station Name</th>
+                            <th>Station ID</th>
+                            <th>Location</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stations-tbody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: #999;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = window.UHMU_API_BASE || sessionStorage.getItem('api_base') || localStorage.getItem('api_base') || 'http://127.0.0.1:8080';
+        const ADMIN_TOKEN = sessionStorage.getItem('admin_token');
+        let stationsCache = [];
+
+        function requireAdminAccess() {
+            const loginType = sessionStorage.getItem('login_type');
+            if (loginType !== 'admin') {
+                showAlert('Administrator access required. Please login as admin.', 'error');
+                document.getElementById('add-station-form').style.display = 'none';
+                return false;
+            }
+            if (!ADMIN_TOKEN) {
+                showAlert('Admin token missing or expired. Please login again.', 'error');
+            }
+            return true;
+        }
+
+        function showAlert(message, type = 'info') {
+            const container = document.getElementById('alert-container');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = message;
+            container.appendChild(alert);
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        function setLoadingRow(text = 'Loading...') {
+            const tbody = document.getElementById('stations-tbody');
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#999;">${text}</td></tr>`;
+        }
+
+        function renderStations() {
+            const tbody = document.getElementById('stations-tbody');
+            if (!stationsCache.length) {
+                setLoadingRow('No stations configured yet');
+                return;
+            }
+            tbody.innerHTML = stationsCache.map((station) => `
+                <tr>
+                    <td><strong>${station.name}</strong></td>
+                    <td>${station.id || '-'}</td>
+                    <td>${station.location || '-'}</td>
+                    <td>${station.email || '-'}</td>
+                    <td>${station.phone || '-'}</td>
+                    <td>
+                        <button class="delete" onclick="deleteStation('${station.name}')">🗑️ Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        async function fetchStations() {
+            setLoadingRow();
+            try {
+                const response = await fetch(`${API_BASE}/api/public/stations`);
+                const data = await response.json();
+                if (!response.ok || !data.ok) {
+                    throw new Error(data.error || 'Failed to load stations');
+                }
+                stationsCache = data.stations || [];
+                renderStations();
+            } catch (e) {
+                showAlert('Error loading stations: ' + e.message, 'error');
+                setLoadingRow('Unable to load stations');
+            }
+        }
+
+        async function addStation(payload) {
+            if (!ADMIN_TOKEN) {
+                throw new Error('Admin token missing. Re-login required.');
+            }
+            const response = await fetch(`${API_BASE}/api/public/admin/stations`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Admin-Token': ADMIN_TOKEN
+                },
+                body: JSON.stringify(payload)
+            });
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                throw new Error(data.error || 'Failed to add station');
+            }
+            return data;
+        }
+
+        async function deleteStation(name) {
+            if (!ADMIN_TOKEN) {
+                showAlert('Admin token missing. Re-login required.', 'error');
+                return;
+            }
+            if (!confirm(`Delete station '${name}'?`)) return;
+            try {
+                const response = await fetch(`${API_BASE}/api/public/admin/stations/${encodeURIComponent(name)}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-Admin-Token': ADMIN_TOKEN
+                    }
+                });
+                const data = await response.json();
+                if (!response.ok || !data.ok) {
+                    throw new Error(data.error || 'Failed to delete station');
+                }
+                showAlert('Station deleted', 'success');
+                fetchStations();
+            } catch (e) {
+                showAlert(e.message, 'error');
+            }
+        }
+
+        document.getElementById('add-station-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!requireAdminAccess()) return;
+
+            const name = document.getElementById('station-name').value.trim();
+            const password = document.getElementById('station-password').value;
+            const stationId = document.getElementById('station-id').value.trim();
+            const location = document.getElementById('station-location').value.trim();
+            const email = document.getElementById('station-email').value.trim();
+            const phone = document.getElementById('station-phone').value.trim();
+
+            if (!name || !password) {
+                showAlert('Station name and password are required', 'error');
+                return;
+            }
+
+            try {
+                await addStation({ station_name: name, password, station_id: stationId, location, email, phone });
+                showAlert(`✅ Station '${name}' added successfully`, 'success');
+                document.getElementById('add-station-form').reset();
+                fetchStations();
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!requireAdminAccess()) {
+                setLoadingRow('Admin login required');
+                return;
+            }
+            fetchStations();
+        });
+    </script>
+</body>
+</html>

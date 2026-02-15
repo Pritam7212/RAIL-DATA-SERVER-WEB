@@ -1,0 +1,99 @@
+/*
+function generateRandomTable() {
+    const tableBody = document.querySelector('#myTable tbody');
+    tableBody.innerHTML = ''; // Clear previous table rows
+
+    // Generate 10 rows of random data
+    for (let i = 0; i < 13; i++) {
+        const row = document.createElement('tr');
+
+        // Generate a random date
+        const dateCell = document.createElement('td');
+        dateCell.textContent = getRandomDate();
+        row.appendChild(dateCell);
+
+        // Generate a random hex error code
+        const errorCodeCell = document.createElement('td');
+        const errorCode = getRandomHexErrorCode();
+        errorCodeCell.textContent = errorCode;
+        row.appendChild(errorCodeCell);
+
+        // Generate a random error description
+        const errorDescriptionCell = document.createElement('td');
+        errorDescriptionCell.textContent = getErrorDescription(errorCode);
+        row.appendChild(errorDescriptionCell);
+
+        tableBody.appendChild(row);
+    }
+}
+
+// Function to generate a random date within the past year
+function getRandomDate() {
+    const today = new Date();
+    const pastYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+    const randomDate = new Date(pastYear.getTime() + Math.random() * (today.getTime() - pastYear.getTime()));
+    return randomDate.toISOString().split('T')[0];
+}
+
+// Function to generate a random hex error code between 00 and FF
+function getRandomHexErrorCode() {
+    const hexCode = Math.floor(Math.random() * 256).toString(16).toUpperCase();
+    return hexCode.padStart(2, '0'); // Ensure it is always two digits
+}
+
+// Function to get an error description based on the error code
+function getErrorDescription(errorCode) {
+    const descriptions = {
+        "00": "No Error",
+        "01": "Minor Glitch",
+        "FF": "Critical Failure",
+        "AB": "Checksum Mismatch",
+        "CD": "Configuration Error",
+        "EE": "Memory Overflow",
+        "7F": "Device Not Responding",
+    };
+    // Return a predefined description if exists, otherwise a generic message
+    return descriptions[errorCode] || "Unknown Error";
+}
+
+generateRandomTable()
+// Load CSV data from Python and display it
+window.addEventListener('pywebviewready',  window.pywebview.api.getCSVData().then(data => {
+        alert()
+        const container = document.querySelector('.container');
+        container.innerHTML = ""; // Clear previous data
+
+        // Create a table element
+        const table = document.createElement('table');
+
+        // Populate table with CSV data
+        data.forEach((row, index) => {
+            const tableRow = document.createElement('tr');
+
+            row.forEach(cell => {
+                const cellElement = index === 0 ? document.createElement('th') : document.createElement('td');
+                cellElement.textContent = cell;
+                tableRow.appendChild(cellElement);
+            });
+
+            table.appendChild(tableRow);
+        });
+
+        container.appendChild(table); // Append the table to the container div
+    });
+})
+    document.getElementById('connect').onclick = function() {
+        pywebview.api.connect_and_log().then(data => {
+              if (data == 'Error') {
+                alert('Cound not recieve data')
+              }else if (data == 'Success') {
+                  pywebview.api.get_csv_data(getQueryParam('name')).then(data => {
+                      generateTableFromCSV(data); // Populate table with CSV data
+                  });
+              }
+
+        });
+    }
+
+*/
+//window.onload = loadCSVData;

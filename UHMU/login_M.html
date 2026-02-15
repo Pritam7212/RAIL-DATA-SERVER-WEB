@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>UHMU Login</title>
+    <link rel="stylesheet" href="mobile_root.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="right">
+        <img src="./assets/logo.png" id="logo">
+        <form class="login" onsubmit="return vForm(event)">
+          <div style="width:80%;margin-bottom:10px;">
+            <label style="font-size:2vh;color:#666;display:block;margin-bottom:5px;">Login Type:</label>
+            <select id="login-type" style="width:100%;padding:8px;border-radius:5px;border:1px solid #ddd;font-size:2vh;">
+              <option value="admin">Admin</option>
+              <option value="station">Station</option>
+            </select>
+          </div>
+          <input type="text" value="" placeholder="Enter Username/Station Name" id="uname">
+          <input type="password" value="" placeholder="Enter Password" id="pwd">
+          <input type="submit" value="Login" id="login">
+          <div id="error-msg" style="color:red;font-size:2vh;margin-top:10px;display:none;text-align:center;"></div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+  const API_BASE = window.UHMU_API_BASE || sessionStorage.getItem('api_base') || localStorage.getItem('api_base') || 'http://127.0.0.1:8080';
+  const urlParams = new URLSearchParams(window.location.search);
+  const loginTypeParam = urlParams.get('type');
+  let forcedLoginType = loginTypeParam || null;
+
+  function persistApiBase() {
+    sessionStorage.setItem('api_base', API_BASE);
+    localStorage.setItem('api_base', API_BASE);
+  }
+
+  persistApiBase();
+
+  async function apiLogin(loginType, username, password) {
+    const endpoint = `${API_BASE}/api/public/login`;
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login_type: loginType, username, password })
+      });
+      const data = await response.json();
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || 'Login failed');
+      }
+      return data;
+    } catch (err) {
+      throw new Error(err.message || 'Server unreachable');
+    }
+  }
+
+  function configureLoginType() {
+    const selector = document.getElementById('login-type');
+    const unameInput = document.getElementById('uname');
+    if (forcedLoginType) {
+      selector.value = forcedLoginType;
+      selector.disabled = true;
+      if (forcedLoginType === 'station') {
+        unameInput.placeholder = 'Station Name/ID';
+      }
+    } else {
+      selector.disabled = false;
+    }
+  }
+
+  function checkOrientation() {
+      if (window.matchMedia("(orientation: portrait)").matches && window.location.href.indexOf('login_D') !== -1) {
+          const typeParam = forcedLoginType ? '?type=' + forcedLoginType : '';
+          window.location.href = 'login_M.html' + typeParam;
+      } else if (window.matchMedia("(orientation: landscape)").matches && window.location.href.indexOf('login_M') !== -1) {
+        const typeParam = forcedLoginType ? '?type=' + forcedLoginType : '';
+        window.location.href = 'login_D.html' + typeParam;
+      }
+  }
+
+  window.addEventListener('resize', checkOrientation);
+  window.addEventListener('OrientationChange', checkOrientation);
+  checkOrientation();
+  sessionStorage.setItem('login', false);
+  sessionStorage.setItem('login_type', 'guest');
+  sessionStorage.removeItem('admin_token');
+
+  function showError(msg) {
+    const errorDiv = document.getElementById('error-msg');
+    errorDiv.textContent = msg;
+    errorDiv.style.display = 'block';
+    setTimeout(() => {
+      errorDiv.style.display = 'none';
+    }, 5000);
+  }
+
+  async function vForm(e) {
+    e.preventDefault();
+    const loginType = forcedLoginType || document.getElementById('login-type').value;
+    const username = document.getElementById('uname').value.trim();
+    const password = document.getElementById('pwd').value;
+
+    if (!username || !password) {
+      showError('Enter username and password');
+      return false;
+    }
+
+    const button = document.getElementById('login');
+    button.disabled = true;
+    button.value = 'Verifying...';
+
+    try {
+      const result = await apiLogin(loginType, username, password);
+      sessionStorage.setItem('login', true);
+      sessionStorage.setItem('login_type', result.login_type);
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('api_base', API_BASE);
+      localStorage.setItem('api_base', API_BASE);
+
+      if (result.login_type === 'admin') {
+        sessionStorage.setItem('admin_token', result.token || '');
+      } else {
+        sessionStorage.removeItem('admin_token');
+      }
+
+      if (result.station) {
+        sessionStorage.setItem('station_id', result.station.id || '');
+        sessionStorage.setItem('station_location', result.station.location || '');
+      } else {
+        sessionStorage.removeItem('station_id');
+        sessionStorage.removeItem('station_location');
+      }
+
+      window.location.href = 'Level3/mobile/index.html';
+      return false;
+    } catch (err) {
+      showError(err.message || 'Login failed');
+      return false;
+    } finally {
+      button.disabled = false;
+      button.value = 'Login';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', configureLoginType);
+  if (document.readyState !== 'loading') {
+    configureLoginType();
+  }
+  </script>
+  <style media="screen">
+    body{
+      height: 100%;
+      width: 100%;
+      display: block;
+      background: rgb(0,98,209);
+      background: radial-gradient(circle, rgba(0,98,209,1) 0%, rgba(0,125,254,1) 50%, rgba(205,217,255,1) 100%);
+      font-family: 'VarelaRound';
+      color: #666;
+    }
+    .container{
+      box-shadow: 0px 0px 100px 8px #0062d1;
+      align-items: center;
+      width: 90vw;
+      height: 90vh;
+      margin-top: 2.5vh;
+      margin-left: 5vw;
+      border-radius: 8px;
+      display: flex;
+      padding-top: 5vh;
+      padding-bottom: 5vh;
+      background-color: white;
+    }
+    .right {
+      text-align: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    form {
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .right > form > input{
+      width: 80%;
+      height: 7vh;
+      border-radius: 10px;
+      background-color: #007dfe33;
+      text-align: center;
+      font-size: 2.5vh;
+    }
+    .right > form > input[type='submit']{
+      background-color: var(--primary-blue);
+      margin-top: 45vh;
+      margin-bottom: 5vh;
+      color: white;
+    }
+    #logo{
+      width: 30vw;
+      height: 10vh;
+      margin-bottom: 5vh;
+    }
+  </style>
+</html>
