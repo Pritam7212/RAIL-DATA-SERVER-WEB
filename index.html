@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Device detection logic
+        function getDeviceType() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            
+            if (/mobile|android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+                // Check for tablet
+                if (/tablet|ipad/i.test(userAgent)) {
+                    return 'tablet';
+                }
+                return 'phone';
+            }
+            return 'desktop';
+        }
+
+        // Redirect based on device type
+        const deviceType = getDeviceType();
+        let redirectUrl;
+
+        switch (deviceType) {
+            case 'phone':
+                redirectUrl = '/UHMU/login_M.html';
+                break;
+            case 'desktop':
+                redirectUrl = '/UHMU/login_D.html';
+                break;
+            default:
+                redirectUrl = '/UHMU/login_D.html';
+        }
+
+        window.location.replace(redirectUrl);
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
