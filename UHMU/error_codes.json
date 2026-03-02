@@ -1,0 +1,569 @@
+{
+  "10": {
+    "cause": "IN1 complementary failure (Ckt ref. W2 & W10)"
+  },
+  "11": {
+    "cause": "IN2 complementary failure (Ckt ref. W3 & W11)"
+  },
+  "12": {
+    "cause": "IN3 complementary failure (Ckt ref. W4 & W12)"
+  },
+  "13": {
+    "cause": "IN4 complementary failure (Ckt ref. W5 & W13)"
+  },
+  "14": {
+    "cause": "IN5 complementary failure (Ckt ref. W6 & W14)"
+  },
+  "15": {
+    "cause": "IN6 complementary failure (Ckt ref. W7 & W15)"
+  },
+  "16": {
+    "cause": "IN7 complementary failure (Ckt ref. W8 & W16)"
+  },
+  "17": {
+    "cause": "IN8 complementary failure (Ckt ref. W9 & W17)"
+  },
+  "18": {
+    "cause": "OUT1 complementary failure (Ckt ref. W18 & W26)"
+  },
+  "19": {
+    "cause": "OUT2 complementary failure (Ckt ref. W19 & W27)"
+  },
+  "20": {
+    "cause": "IN9 complementary failure (Ckt ref. W64 & W72)"
+  },
+  "21": {
+    "cause": "IN10 complementary failure (Ckt ref. W65 & W73)"
+  },
+  "22": {
+    "cause": "IN11 complementary failure (Ckt ref. W66 & W74)"
+  },
+  "23": {
+    "cause": "IN12 complementary failure (Ckt ref. W67 & W75)"
+  },
+  "24": {
+    "cause": "IN13 complementary failure (Ckt ref. W68 & W76)"
+  },
+  "25": {
+    "cause": "IN14 complementary failure (Ckt ref. W69 & W77)"
+  },
+  "26": {
+    "cause": "IN15 complementary failure (Ckt ref. W70 & W78)"
+  },
+  "27": {
+    "cause": "IN16 complementary failure (Ckt ref. W71 & W79)"
+  },
+  "28": {
+    "cause": "OUT9 complementary failure (Ckt ref. W80 & W88)"
+  },
+  "29": {
+    "cause": "OUT10 complementary failure (Ckt ref. W81 & W89)"
+  },
+  "30": {
+    "cause": "BIPR1 complementary failure"
+  },
+  "31": {
+    "cause": "BIPR2 complementary failure"
+  },
+  "33": {
+    "cause": "Link Fail (SSB mode)"
+  },
+  "34": {
+    "cause": "RSSB mode"
+  },
+  "37": {
+    "cause": "CPU A bad"
+  },
+  "38": {
+    "cause": "CPU B bad"
+  },
+  "39": {
+    "cause": "CPU C bad"
+  },
+  "40": {
+    "cause": "OUT1 forced pickup [LFR Non-vital relay]"
+  },
+  "41": {
+    "cause": "OUT2 forced pickup [TCFXR vital relay]"
+  },
+  "42": {
+    "cause": "OUT3 forced pickup [TCFCR vital relay]"
+  },
+  "43": {
+    "cause": "OUT4 forced pickup [TGTYR vital relay]"
+  },
+  "44": {
+    "cause": "OUT5 forced pickup [ASGNCPR vital relay]"
+  },
+  "45": {
+    "cause": "OUT6 forced pickup [TGTZR vital relay]"
+  },
+  "46": {
+    "cause": "OUT7 forced pickup [BLR vital relay]"
+  },
+  "47": {
+    "cause": "OUT8 forced pickup"
+  },
+  "48": {
+    "cause": "OUT9 forced pickup"
+  },
+  "49": {
+    "cause": "OUT10 forced pickup"
+  },
+  "50": {
+    "cause": "IN1 jitter"
+  },
+  "51": {
+    "cause": "IN2 jitter"
+  },
+  "52": {
+    "cause": "IN3 jitter"
+  },
+  "53": {
+    "cause": "IN4 jitter"
+  },
+  "54": {
+    "cause": "IN5 jitter"
+  },
+  "55": {
+    "cause": "IN6 jitter"
+  },
+  "56": {
+    "cause": "IN7 jitter"
+  },
+  "57": {
+    "cause": "IN8 jitter"
+  },
+  "58": {
+    "cause": "OUT1 jitter [LFR Non-vital relay]"
+  },
+  "59": {
+    "cause": "OUT2 jitter [TCFXR vital relay]"
+  },
+  "60": {
+    "cause": "IN9 jitter"
+  },
+  "61": {
+    "cause": "IN10 jitter"
+  },
+  "62": {
+    "cause": "IN11 jitter"
+  },
+  "63": {
+    "cause": "IN12 jitter"
+  },
+  "64": {
+    "cause": "IN13 jitter"
+  },
+  "65": {
+    "cause": "IN14 jitter"
+  },
+  "66": {
+    "cause": "IN15 jitter"
+  },
+  "67": {
+    "cause": "IN16 jitter"
+  },
+  "68": {
+    "cause": "OUT9 jitter"
+  },
+  "69": {
+    "cause": "OUT10 jitter"
+  },
+  "70": {
+    "cause": "BIPR1 jitter"
+  },
+  "71": {
+    "cause": "BIPR2 jitter"
+  },
+  "73": {
+    "cause": "Shut down relay phase generator failure (phase not changing within 30 minutes)"
+  },
+  "75": {
+    "cause": "Timer2 input bad"
+  },
+  "78": {
+    "cause": "Data bus check failed"
+  },
+  "79": {
+    "cause": "EPROM Checksum failed"
+  },
+  "80": {
+    "cause": "OUT1 failed to pick up"
+  },
+  "81": {
+    "cause": "OUT2 failed to pick up"
+  },
+  "82": {
+    "cause": "OUT3 failed to pick up"
+  },
+  "83": {
+    "cause": "OUT4 failed to pick up"
+  },
+  "84": {
+    "cause": "OUT5 failed to pick up"
+  },
+  "85": {
+    "cause": "OUT6 failed to pick up"
+  },
+  "86": {
+    "cause": "OUT7 failed to pick up"
+  },
+  "87": {
+    "cause": "OUT8 failed to pick up"
+  },
+  "88": {
+    "cause": "OUT9 failed to pick up"
+  },
+  "89": {
+    "cause": "OUT10 failed to pick up"
+  },
+  "90": {
+    "cause": "BIPR1 or BIPR2 or both picked up before POST initialization"
+  },
+  "92": {
+    "cause": "UFSBI address bad"
+  },
+  "93": {
+    "cause": "Output voter (GAL) differential output complementary mismatch (run-time)"
+  },
+  "95": {
+    "cause": "GAL complementary mismatch in output card1 (POST checking)"
+  },
+  "96": {
+    "cause": "GAL complementary mismatch in output card2 (POST checking)"
+  },
+  "99": {
+    "cause": "'Start' not pressed within 30 sec. of power on"
+  },
+  "00": {
+    "cause": "Normal mode"
+  },
+  "01": {
+    "cause": "Output Latch 1 Read-back bad"
+  },
+  "02": {
+    "cause": "Output Latch 2 Read-back bad"
+  },
+  "05": {
+    "cause": "UFSBI source address mismatch in receive message"
+  },
+  "06": {
+    "cause": "UFSBI destination address mismatch in receive message"
+  },
+  "07": {
+    "cause": "TXENABLE-A/B/C signal produced by Inter-block data selector logic in CCC not matching with Inter-block phase"
+  },
+  "08": {
+    "cause": "CPU failed to transmit"
+  },
+  "0A": {
+    "cause": "Clear input to U9 low"
+  },
+  "0B": {
+    "cause": "Ready to accept 'start' command after POST"
+  },
+  "0C": {
+    "cause": "PS monitor test in progress in POST"
+  },
+  "1A": {
+    "cause": "OUT3 complementary failure (Ckt ref. W20 & W28)"
+  },
+  "1B": {
+    "cause": "OUT4 complementary failure (Ckt ref. W21 & W29)"
+  },
+  "1C": {
+    "cause": "OUT5 complementary failure (Ckt ref. W22 & W30)"
+  },
+  "1D": {
+    "cause": "OUT6 complementary failure (Ckt ref. W23 & W31)"
+  },
+  "1E": {
+    "cause": "OUT7 complementary failure (Ckt ref. W24 & W32)"
+  },
+  "1F": {
+    "cause": "OUT8 complementary failure (Ckt ref. W25 & W33)"
+  },
+  "2A": {
+    "cause": "OUT11 complementary failure (Ckt ref. W82 & W90)"
+  },
+  "2B": {
+    "cause": "OUT12 complementary failure (Ckt ref. W83 & W91)"
+  },
+  "2C": {
+    "cause": "OUT13 complementary failure (Ckt ref. W84 & W92)"
+  },
+  "2D": {
+    "cause": "OUT14 complementary failure (Ckt ref. W85 & W93)"
+  },
+  "2E": {
+    "cause": "OUT15 complementary failure (Ckt ref. W86 & W94)"
+  },
+  "2F": {
+    "cause": "OUT16 complementary failure (Ckt ref. W87 & W95)"
+  },
+  "3A": {
+    "cause": "Inter-processor communication channel failure (common mode)"
+  },
+  "4A": {
+    "cause": "OUT11 forced pickup"
+  },
+  "4B": {
+    "cause": "OUT12 forced pickup"
+  },
+  "4C": {
+    "cause": "OUT13 forced pickup"
+  },
+  "4D": {
+    "cause": "OUT14 forced pickup"
+  },
+  "4E": {
+    "cause": "OUT15 forced pickup"
+  },
+  "4F": {
+    "cause": "OUT16 forced pickup"
+  },
+  "5A": {
+    "cause": "OUT3 jitter [TCFCR vital relay]"
+  },
+  "5B": {
+    "cause": "OUT4 jitter [TGTYR vital relay]"
+  },
+  "5C": {
+    "cause": "OUT5 jitter [ASGNCPR vital relay]"
+  },
+  "5D": {
+    "cause": "OUT6 jitter [TGTZR vital relay]"
+  },
+  "5E": {
+    "cause": "OUT7 jitter [BLR vital relay]"
+  },
+  "5F": {
+    "cause": "OUT8 jitter"
+  },
+  "6A": {
+    "cause": "OUT11 jitter"
+  },
+  "6B": {
+    "cause": "OUT12 jitter"
+  },
+  "6C": {
+    "cause": "OUT13 jitter"
+  },
+  "6D": {
+    "cause": "OUT14 jitter"
+  },
+  "6E": {
+    "cause": "OUT15 jitter"
+  },
+  "6F": {
+    "cause": "OUT16 jitter"
+  },
+  "7A": {
+    "cause": "BIPR1 input to GAL stuck at low"
+  },
+  "7B": {
+    "cause": "BIPR2 input to GAL stuck at low"
+  },
+  "7C": {
+    "cause": "BIPR1 command output not matching with shutdown relay phase"
+  },
+  "8A": {
+    "cause": "OUT11 failed to pick up"
+  },
+  "8B": {
+    "cause": "OUT12 failed to pick up"
+  },
+  "8C": {
+    "cause": "OUT13 failed to pick up"
+  },
+  "8D": {
+    "cause": "OUT14 failed to pick up"
+  },
+  "8E": {
+    "cause": "M15 failed to pick up"
+  },
+  "8F": {
+    "cause": "M16 failed to pick up"
+  },
+  "A0": {
+    "cause": "X-ACTIVE and X-ACTIVE/ signals found mismatched in WDT check"
+  },
+  "A1": {
+    "cause": "Active signal bad detected in WDT check (stuck_at_high)"
+  },
+  "A2": {
+    "cause": "OUTEN signal stuck_at_high"
+  },
+  "A3": {
+    "cause": "Output latches detected non-zero during in WDT checking"
+  },
+  "A4": {
+    "cause": "Active signal bad in WDT2_check (stuck_at_high)"
+  },
+  "A5": {
+    "cause": "IPC phase sequence bad"
+  },
+  "A6": {
+    "cause": "IPC phase sequence bad"
+  },
+  "A7": {
+    "cause": "IPC phase sequence bad"
+  },
+  "A8": {
+    "cause": "IPC phase sequence bad"
+  },
+  "AA": {
+    "cause": "Relay check in progress in POST / output latch1 detected bad in zero test"
+  },
+  "AB": {
+    "cause": "Latch2 bad in zero test"
+  },
+  "B0": {
+    "cause": "Stack check failed"
+  },
+  "B1": {
+    "cause": "Rapid address check fail"
+  },
+  "B4": {
+    "cause": "Register check fail"
+  },
+  "B5": {
+    "cause": "BIPR2 (LFR) relay picked up out of phase"
+  },
+  "B6": {
+    "cause": "BIPR1 relay picked up out of phase"
+  },
+  "B7": {
+    "cause": "Backup check fail"
+  },
+  "B8": {
+    "cause": "Neighbour shutdown fail for A"
+  },
+  "B9": {
+    "cause": "Neighbour shutdown fail for B"
+  },
+  "BA": {
+    "cause": "Neighbour shutdown fail for C"
+  },
+  "BD": {
+    "cause": "BIPR1 dropped out of phase"
+  },
+  "BE": {
+    "cause": "BIPR2 (LFR) dropped out of phase"
+  },
+  "C1": {
+    "cause": "IPC phase timer out of range/not working"
+  },
+  "C6": {
+    "cause": "Sustained mismatch between self parallel input and neighbour parallel input"
+  },
+  "C9": {
+    "cause": "Data bus error"
+  },
+  "CA": {
+    "cause": "Inter block phase sequence error"
+  },
+  "D0": {
+    "cause": "GAL 1 illegal high"
+  },
+  "D1": {
+    "cause": "GAL 2 illegal high"
+  },
+  "D2": {
+    "cause": "GAL 3 illegal high"
+  },
+  "D3": {
+    "cause": "GAL 4 illegal high"
+  },
+  "D4": {
+    "cause": "GAL 5 illegal high"
+  },
+  "D5": {
+    "cause": "GAL 6 illegal high"
+  },
+  "D6": {
+    "cause": "GAL 7 illegal high"
+  },
+  "D7": {
+    "cause": "GAL 8 illegal high"
+  },
+  "D8": {
+    "cause": "GAL 9 illegal high"
+  },
+  "D9": {
+    "cause": "GAL 10 illegal high"
+  },
+  "DA": {
+    "cause": "GAL 11 illegal high"
+  },
+  "DB": {
+    "cause": "GAL 12 illegal high"
+  },
+  "DC": {
+    "cause": "GAL 13 illegal high"
+  },
+  "DD": {
+    "cause": "GAL 14 illegal high"
+  },
+  "DE": {
+    "cause": "GAL 15 illegal high"
+  },
+  "DF": {
+    "cause": "GAL 16 illegal high"
+  },
+  "E0": {
+    "cause": "TXAEN signal from CPU improper (stuck at high/low)"
+  },
+  "E1": {
+    "cause": "TXBEN signal from CPU improper (stuck at high/low)"
+  },
+  "E2": {
+    "cause": "TXCEN signal from CPU improper (stuck at high/low)"
+  },
+  "E8": {
+    "cause": "GAL output complementary mismatch for BIPR1"
+  },
+  "E9": {
+    "cause": "GAL output complementary mismatch for BIPR2"
+  },
+  "EB": {
+    "cause": "Watchdog test by pulse withdrawal failed"
+  },
+  "EC": {
+    "cause": "PULSEN signal stuck at high (in WDT check)"
+  },
+  "ED": {
+    "cause": "BIPR2 feed to GAL not low in BIPR1 phase"
+  },
+  "F1": {
+    "cause": "Configuration failure (output card1 absent)"
+  },
+  "F2": {
+    "cause": "Configuration failure (output card2 absent)"
+  },
+  "F5": {
+    "cause": "CPU_ID failure"
+  },
+  "F8": {
+    "cause": "FRSNESS pulse stuck at high"
+  },
+  "F9": {
+    "cause": "Vcc monitoring latch Q output stuck at 0 (POST checking)"
+  },
+  "FA": {
+    "cause": "BIPR GAL inputs not going low during zero test (any of BIPR1 and BIPR2 or both)"
+  },
+  "FB": {
+    "cause": "BIPR1 or BIPR2 feed from U28 stuck at high in zero test"
+  },
+  "FC": {
+    "cause": "ST pulse stuck at low"
+  },
+  "FD": {
+    "cause": "FRSNESS pulse stuck at high"
+  },
+  "FE": {
+    "cause": "ST pulse stuck at high"
+  }
+}
